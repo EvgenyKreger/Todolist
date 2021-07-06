@@ -33,7 +33,8 @@ function App() {
         [todolistId2]: [
             {id: v1(), title: 'Bread', isDone: true},
             {id: v1(), title: 'Milk', isDone: true},
-            {id: v1(), title: 'Spread', isDone: false}
+            {id: v1(), title: 'Spread', isDone: false},
+            {id: v1(), title: 'Book', isDone: false}
         ]
 
     });

@@ -4,8 +4,8 @@ import {v1} from 'uuid';
 import './App.css'
 
 export type filterValues = 'All' | 'Active' | 'Completed'
-type TaskStateType={
-    [key:string]:Array<PropsTasksType>
+type TaskStateType = {
+    [key: string]: Array<PropsTasksType>
 }
 type TypeTodolists = {
     id: string
@@ -48,27 +48,27 @@ function App() {
         }
     }
 
-    function deleteTask(id: string,todolistId:string) {
+    function deleteTask(id: string, todolistId: string) {
 
-        let todolistTasks=tasks[todolistId];
-        tasks[todolistId]=todolistTasks.filter(t=>t.id !=id);
+        let todolistTasks = tasks[todolistId];
+        tasks[todolistId] = todolistTasks.filter(t => t.id != id);
         return (
             setTasks({...tasks})
         )
     }
 
-    function addTask(value: string, todolistId:string) {
+    function addTask(value: string, todolistId: string) {
         let newTask = {id: v1(), title: value, isDone: false}
-       let todolistTasks=tasks[todolistId]
-        tasks[todolistId]=[newTask,...todolistTasks]
+        let todolistTasks = tasks[todolistId]
+        tasks[todolistId] = [newTask, ...todolistTasks]
         return (
             setTasks({...tasks})
         )
 
     }
 
-    function changeStatus(id: string, isDone: boolean,todolistId:string) {
-        let todolistTasks=tasks[todolistId];
+    function changeStatus(id: string, isDone: boolean, todolistId: string) {
+        let todolistTasks = tasks[todolistId];
         let status = todolistTasks.find(t => t.id === id)
         if (status) {
             status.isDone = isDone
@@ -77,17 +77,18 @@ function App() {
     }
 
     return (
-        <div >
+        <div>
+
             {todolists.map(tl => {
-let allTodolistTasks=tasks[tl.id]
-                let forTasks=allTodolistTasks
+                let allTodolistTasks = tasks[tl.id]
+                let forTasks = allTodolistTasks
 
 
                 if (tl.filter === 'Active') {
                     forTasks = allTodolistTasks.filter(t => !t.isDone)
                 }
                 if (tl.filter === 'Completed') {
-                    forTasks = allTodolistTasks.filter(t=> t.isDone)
+                    forTasks = allTodolistTasks.filter(t => t.isDone)
                 }
                 return <Todolist
                     key={tl.id}

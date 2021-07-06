@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {PropsTasksType, Todolist} from './Todolist';
 import {v1} from 'uuid';
 import './App.css'
+import {AddItemForm} from './AddItemForm';
 
 export type filterValues = 'All' | 'Active' | 'Completed'
 type TaskStateType = {
@@ -75,9 +76,19 @@ function App() {
         }
         return (setTasks({...tasks}))
     }
+    function addTodolist(title:string){
+        let todolist:TypeTodolists={
+            id: v1(),
+            title: title,
+            filter:'All'
+        }
+       setTodolists([todolist,...todolists]);
+        setTasks({...tasks,[todolist.id]:[]})
+    }
 
     return (
-        <div>
+        <div >
+            <AddItemForm addItem={addTodolist}/>
 
             {todolists.map(tl => {
                 let allTodolistTasks = tasks[tl.id]

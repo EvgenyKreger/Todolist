@@ -19,6 +19,7 @@ type PropsType = {
     changeStatus:(id:string,isDone:boolean,todolistId:string)=>void
     id:string
     onChangeInputTasks:(id:string,newTitle:string,todolistId:string)=>void
+    changeTitleTodolist:(id:string,newTitle:string)=>void
 }
 
 export function Todolist(props: PropsType) {
@@ -31,10 +32,11 @@ const onchangeFilterCompletedHandler=()=>props.changeFilter('Completed',props.id
 const addTask=(title:string)=>{
     props.addTask(title,props.id)
 }
+const changeTitleTodolist=(newTitle:string)=>props.changeTitleTodolist(props.id,newTitle)
 
     return (
         <div className={'todo'}>
-            <h1>{props.title}<button> x </button></h1>
+            <h1><EditableSpan value={props.title} onChangeInput={changeTitleTodolist} /><button> x </button></h1>
 
            <AddItemForm addItem={addTask}/>
 
@@ -50,8 +52,8 @@ const addTask=(title:string)=>{
                     <li key={t.id} className={t.isDone ? 'opacity' :''}><input  type="checkbox" checked={t.isDone} onChange={onChangeIsDone}/>
 
                         <EditableSpan value={t.title} onChangeInput={onChangeInput} />
-
-                    <button onClick={onClickDeleteTask}>X</button>
+                    <button onClick={onClickDeleteTask}>X
+                    </button>
                 </li>)})}
 
             </ul>

@@ -67,6 +67,14 @@ function App() {
         )
 
     }
+    function changeTitleTodolist(id:string,newTitle:string){
+        let changeTitleTodolist = todolists.find(t => t.id === id)
+        if (changeTitleTodolist) {
+            changeTitleTodolist.title = newTitle
+        }
+        return setTodolists([...todolists])
+    }
+
 
     function changeStatus(id: string, isDone: boolean, todolistId: string) {
         let todolistTasks = tasks[todolistId];
@@ -125,6 +133,7 @@ function App() {
                     filter={tl.filter}
                     changeStatus={changeStatus}
                     onChangeInputTasks={onChangeInputTasks}
+                    changeTitleTodolist={changeTitleTodolist}
 
                 />
             })

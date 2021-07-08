@@ -3,6 +3,8 @@ import {PropsTasksType, Todolist} from './Todolist';
 import {v1} from 'uuid';
 import './App.css'
 import {AddItemForm} from './AddItemForm';
+import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from '@material-ui/core';
+import {Menu} from '@material-ui/icons';
 
 export type filterValues = 'All' | 'Active' | 'Completed'
 type TaskStateType = {
@@ -52,7 +54,7 @@ function App() {
     function deleteTask(id: string, todolistId: string) {
 
         let todolistTasks = tasks[todolistId];
-        tasks[todolistId] = todolistTasks.filter(t => t.id != id);
+        tasks[todolistId] = todolistTasks.filter(t => t.id !== id);
         setTasks({...tasks})
 
     }
@@ -117,8 +119,22 @@ function App() {
 
     return (
         <div >
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton edge="start"  color="inherit" aria-label="menu">
+                        <Menu />
+                    </IconButton>
+                    <Typography variant="h6" >
+                        News
+                    </Typography>
+                    <Button color="inherit">Login</Button>
+                </Toolbar>
+            </AppBar>
+            <Container fixed>
+                <Grid container style={{padding:"20px"}}>
             <AddItemForm addItem={addTodolist}/>
-
+                </Grid>
+                <Grid container>
             {todolists.map(tl => {
                 let allTodolistTasks = tasks[tl.id]
                 let forTasks = allTodolistTasks
@@ -130,7 +146,9 @@ function App() {
                 if (tl.filter === 'Completed') {
                     forTasks = allTodolistTasks.filter(t => t.isDone)
                 }
-                return <Todolist
+                return <Grid item>
+                    <Paper style={{margin:"20px" ,padding:'10px'}}>
+                <Todolist
                     key={tl.id}
                     id={tl.id}
                     title={tl.title}
@@ -145,8 +163,12 @@ function App() {
                     deleteTodolist={deleteTodolist}
 
                 />
+                </Paper>
+                </Grid>
             })
             }
+                </Grid>
+            </Container>
         </div>
     )
 }

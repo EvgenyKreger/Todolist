@@ -1,4 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import { IconButton, TextField} from '@material-ui/core';
+import {AddBox} from '@material-ui/icons';
 
 type AddItemFormPropsType = {
     addItem: (title: string) => void
@@ -21,17 +23,35 @@ export function AddItemForm(props: AddItemFormPropsType) {
         }
     }
     const onClickAddTask = () => {
-        if (inputTitle.trim() === '') return setError('required field');
+        if (inputTitle.trim() === '') return setError('Title is required');
         setInputTitle('')
         props.addItem(inputTitle.trim());
         setInputTitle('')
     }
     return <div>
-        <input className={error ? 'error' : ''}
-               value={inputTitle}
-               onChange={onChangeInputHandler}
-               onKeyPress={onKeyPressHandler}/>
-        <button onClick={onClickAddTask}>+</button>
-        <div className={'error-message'}>{error}</div>
+        <TextField variant={'outlined'} size={'small'}
+                   label={'Title'}
+                   helperText={error}
+                   error={!!error}
+                   value={inputTitle}
+                   onChange={onChangeInputHandler}
+                   onKeyPress={onKeyPressHandler}
+        />
+
+
+        {/*// <input className={error ? 'error' : ''}*/}
+        {/*//        value={inputTitle}*/}
+        {/*//        onChange={onChangeInputHandler}*/}
+        {/*//        onKeyPress={onKeyPressHandler}/>*/}
+        {/*<Button variant="contained" color="primary" size="large" onClick={onClickAddTask}>+</Button>*/}
+        <IconButton color={'primary'} size={'small'} onClick={onClickAddTask}>
+            <AddBox/>
+        </IconButton>
+
+
+
+        {/*<button onClick={onClickAddTask}>+</button>*/}
+
+        {/*<div className={'error-message'}>{error}</div> заменяем на helperText={error}*/}
     </div>
 }

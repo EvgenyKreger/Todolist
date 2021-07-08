@@ -1,20 +1,20 @@
-.error{
-    border: red 2px solid;
-}
-.error-message{
-    color: red;
-}
-.opacity{
-    opacity: 0.3;
-}
-/*.active{*/
-/*    background-color: aqua;*/
+/*.error{*/
+/*    border: red 2px solid;*/
 /*}*/
-.filter{
-    background-color: cornflowerblue;
-}
-.todo{
-    display: inline-grid;
-    margin: 50px;
+/*.error-message{*/
+/*    color: red;*/
+/*}*/
+/*.opacity{*/
+/*    opacity: 0.3;*/
+/*}*/
+/*!*.active{*!*/
+/*!*    background-color: aqua;*!*/
+/*!*}*!*/
+/*.filter{*/
+/*    background-color: cornflowerblue;*/
+/*}*/
+/*.todo{*/
+/*    display: inline-grid;*/
+/*    margin: 50px;*/
 
-}
+/*}*/

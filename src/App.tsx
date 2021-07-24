@@ -10,7 +10,7 @@ export type filterValues = 'All' | 'Active' | 'Completed'
 type TaskStateType = {
     [key: string]: Array<PropsTasksType>
 }
-type TypeTodolists = {
+export type TypeTodolists = {
     id: string
     title: string
     filter: filterValues
@@ -76,6 +76,7 @@ function App() {
         )
 
     }
+
     function changeTitleTodolist(id:string,newTitle:string){
         let changeTitleTodolist = todolists.find(t => t.id === id)
         if (changeTitleTodolist) {

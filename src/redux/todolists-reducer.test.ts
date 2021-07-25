@@ -58,7 +58,7 @@ test ('correct todolist change filter',()=>{
     let TodolistId_2 =v1();
     let newFilter:filterValues='Completed';
 
-    
+
     const startState:Array<TypeTodolists> =[
         {id:TodolistId_1, title:'What to learn', filter:'All'},
         {id:TodolistId_2, title:'What to buy', filter:'All'}

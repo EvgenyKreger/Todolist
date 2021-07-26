@@ -68,3 +68,4 @@ test ('correct todolist change filter',()=>{
     expect(endtState[0].filter).toBe('Completed');
     expect(endtState[1].filter).toBe('All')
 })
+
